@@ -15,7 +15,7 @@ export default createRouter({
     },
     {
       component: FavoritsView,
-      path: "/favorits",
+      path: "/favorites",
     },
     {
       component: SearchView,

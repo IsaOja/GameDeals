@@ -3,11 +3,11 @@ import HomeView from "./views/HomeView.vue";
 </script>
 
 <template>
-  <header>
-    <router-link to="/">
+  <router-link to="/">
+    <header>
       <h1>Game Deals</h1>
-    </router-link>
-  </header>
+    </header>
+  </router-link>
 
   <main>
     <RouterView />
@@ -19,4 +19,8 @@ import HomeView from "./views/HomeView.vue";
   </footer>
 </template>
 
-<style></style>
+<style>
+a {
+  text-decoration: none;
+}
+</style>
