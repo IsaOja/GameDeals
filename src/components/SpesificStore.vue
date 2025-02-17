@@ -1,57 +1,82 @@
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref, watch } from "vue";
 import axios from "axios";
 
-const props = defineProps({
-  maxPrice: {
-    type: Number,
-    default: 15,
-  },
-});
-
+const stores = ref([]);
 const deals = ref([]);
+const selectedStore = ref("");
 
-function getDeals() {
+function getStores() {
   axios
     .get("https://www.cheapshark.com/api/1.0/stores")
     .then((response) => {
       sessionStorage.setItem("stores", JSON.stringify(response.data));
-      const stores = response.data;
-      axios
-        .get(
-          `https://www.cheapshark.com/api/1.0/deals?upperPrice=${props.maxPrice}&sortBy=DealRating`
-        )
-        .then((response) => {
-          const getDeals = response.data;
-
-          getDeals.forEach((deal) => {
-            const foundStore = stores.find(
-              (store) => store.storeID === deal.storeID
-            );
-            deal.store = foundStore.storeName;
-            deals.value.push(deal);
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      stores.value = response.data;
     })
     .catch((error) => {
       console.log(error);
     });
 }
-getDeals();
+getStores();
 
-function saveToFavorites(deal) {
-  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  if (!favorites.some((fav) => fav.dealID === deal.dealID)) {
-    favorites.push(deal);
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }
+function getDeals() {
+  deals.value = [];
+  axios
+    .get(
+      `https://www.cheapshark.com/api/1.0/deals?storeID=${selectedStore.value}&sortBy=DealRating`
+    )
+    .then((response) => {
+      const getDeals = response.data;
+      const stores = JSON.parse(sessionStorage.getItem("stores"));
+
+      getDeals.forEach((deal) => {
+        const foundStore = stores.find(
+          (store) => store.storeID === deal.storeID
+        );
+        deal.store = foundStore.storeName;
+        deals.value.push(deal);
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
+watch(selectedStore, () => {
+  getDeals();
+});
 </script>
 
 <template>
+  <div class="selector">
+    <div class="dropdown">
+      <label for="store">Select a Store: </label>
+      <select v-model="selectedStore" id="store">
+        <option
+          v-for="store in stores"
+          :key="store.storeID"
+          :value="store.storeID"
+        >
+          {{ store.storeName }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div id="container2">
+    <div class="head">
+      <div class="head-thumb">
+        <h2>Thumbnail</h2>
+      </div>
+      <div class="haed-title">
+        <h2>Title</h2>
+      </div>
+      <div class="head-price">
+        <h2>Price</h2>
+      </div>
+      <div class="head-store">
+        <h2>Store</h2>
+      </div>
+    </div>
+  </div>
   <div class="games">
     <div class="game" v-for="deal in deals" :key="deal.dealID">
       <div class="game-thumb">
@@ -68,14 +93,22 @@ function saveToFavorites(deal) {
       <div class="game-stores">
         <p id="game-store">{{ deal.store }}</p>
       </div>
-      <div class="game-favorite">
-        <button @click="saveToFavorites(deal)">❤️</button>
-      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(1.5);
+}
+
+.dropdown {
+  margin-bottom: 20px;
+}
+
 main {
   color: #333;
 }
@@ -149,15 +182,9 @@ main {
   width: 50%;
 }
 
-.game-favorite {
-  margin-top: 40px;
-  transform: scale(1.5);
-}
-
 #game-normalPrice {
   text-decoration: line-through;
 }
-
 img {
   width: 100%;
   max-width: 300px;

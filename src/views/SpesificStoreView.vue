@@ -1,3 +1,7 @@
+<script setup>
+import SpecificStore from "../components/SpesificStore.vue";
+</script>
+
 <template>
-  <h1>specific stores</h1>
+  <SpecificStore />
 </template>

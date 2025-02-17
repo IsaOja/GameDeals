@@ -3,7 +3,7 @@ import SearchGames from "../components/SearchGames.vue";
 </script>
 
 <template>
-  <div class="container1">
+  <!-- <div class="container1">
     <div class="search">
       <h2>Search</h2>
       <label for="game"></label>
@@ -21,12 +21,12 @@ import SearchGames from "../components/SearchGames.vue";
         <h2>Price</h2>
       </div>
     </div>
-  </div>
+  </div> -->
   <SearchGames />
 </template>
 
 <style scoped>
-.container1 {
+/* .container1 {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 0.5fr 1fr;
@@ -67,37 +67,5 @@ import SearchGames from "../components/SearchGames.vue";
 
 .head-price {
   grid-area: head-price;
-}
-
-.games {
-  display: flex;
-  flex-direction: column;
-  grid-area: games;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  font-size: large;
-  font-weight: bold;
-}
-
-.game-thumb {
-  width: 50%;
-}
-
-.game-title {
-  width: 50%;
-}
-
-.game-price {
-  width: 50%;
-}
-img {
-  width: 100%;
-  max-width: 300px;
-  height: 100%;
-  max-height: 200px;
-}
+} */
 </style>
