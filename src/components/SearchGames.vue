@@ -1,6 +1,7 @@
 <script setup>
 import { ref, defineProps } from "vue";
 import axios from "axios";
+import { RouterLink } from "vue-router";
 
 const games = ref([]);
 
@@ -48,17 +49,20 @@ function searchGames() {
       </div>
     </div>
   </div>
+
   <div class="games">
     <div class="game" v-for="game in games" :key="game.gameID">
-      <div class="game-thumb">
-        <img id="game-img" :src="game.thumb" alt="Image missing" />
-      </div>
-      <div class="game-title">
-        <p id="game-gametitle">{{ game.external }}</p>
-      </div>
-      <div class="game-price">
-        <p id="game-salesPrice">{{ game.cheapest }}</p>
-      </div>
+      <RouterLink :to="'/singlegame/' + game.gameID">
+        <div class="game-thumb">
+          <img id="game-img" :src="game.thumb" alt="Image missing" />
+        </div>
+        <div class="game-title">
+          <p id="game-gametitle">{{ game.external }}</p>
+        </div>
+        <div class="game-price">
+          <p id="game-salesPrice">{{ game.cheapest }}</p>
+        </div>
+      </RouterLink>
     </div>
   </div>
 </template>

@@ -5,6 +5,7 @@ import FavoritsView from "./views/FavoritsView.vue";
 import SearchView from "./views/SearchView.vue";
 import SpesificStoreView from "./views/SpesificStoreView.vue";
 import HomeView from "./views/HomeView.vue";
+import SingleGameView from "./views/SingleGameView.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -20,6 +21,11 @@ export default createRouter({
     {
       component: SearchView,
       path: "/search",
+    },
+    {
+      component: SingleGameView,
+      path: "/singlegame/:gameID",
+      name: "SingleGame",
     },
     {
       component: SpesificStoreView,
