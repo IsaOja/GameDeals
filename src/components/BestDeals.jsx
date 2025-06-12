@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/BestDeals.css";
 
@@ -53,5 +53,3 @@ export default function BestDeals({ maxPrice = 15 }) {
     </div>
   );
 }
-
-// ...CSS: see below...

@@ -62,11 +62,6 @@ main {
   width: 50%;
 }
 
-.game-favorite {
-  margin-top: 40px;
-  transform: scale(1.5);
-}
-
 #game-normalPrice {
   text-decoration: line-through;
 }

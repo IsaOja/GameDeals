@@ -1,4 +1,3 @@
-import React from "react";
 import BestDeals from "../components/BestDeals";
 import "../styles/BestDeals.css";
 
