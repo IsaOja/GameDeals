@@ -72,7 +72,7 @@ export default function SearchView() {
         </View>
       </View>
       {searchResults.map((search) => (
-        <View style={styles.game} key={search.searchID}>
+        <View style={styles.game} key={search.dealID}>
           <View style={styles.gameThumb}>
             <Image
               style={styles.gameImg}
