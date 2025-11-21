@@ -1,5 +1,6 @@
 main {
   color: #333;
+  justify-content: center;
 }
 #container2 {
   display: grid;

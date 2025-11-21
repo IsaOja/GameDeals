@@ -1,7 +1,8 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/HomeView.css";
 
-export default function HomeView() {
+const HomeView: React.FC = () => {
   return (
     <div className="content">
       <div className="container1">
@@ -16,4 +17,6 @@ export default function HomeView() {
       </div>
     </div>
   );
-}
+};
+
+export default HomeView;

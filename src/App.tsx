@@ -1,15 +1,15 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import BestDealsView from "./views/BestDealsView";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
-      <Link to="/">
-        <header>
-          <h1>Game Deals</h1>
-        </header>
-      </Link>
+      <header>
+        <h1>Game Deals</h1>
+        <Link to="/">Home</Link>
+      </header>
       <main>
         <Routes>
           <Route path="/" element={<HomeView />} />
@@ -22,6 +22,6 @@ function App() {
       </footer>
     </Router>
   );
-}
+};
 
 export default App;

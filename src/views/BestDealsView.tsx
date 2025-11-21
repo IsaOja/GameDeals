@@ -1,7 +1,8 @@
+import React from "react";
 import BestDeals from "../components/BestDeals";
 import "../styles/BestDeals.css";
 
-export default function BestDealsView() {
+const BestDealsView: React.FC = () => {
   return (
     <>
       <div id="container2">
@@ -23,4 +24,6 @@ export default function BestDealsView() {
       <BestDeals />
     </>
   );
-}
+};
+
+export default BestDealsView;
