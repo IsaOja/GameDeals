@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import HomeView from "./views/HomeView";
 import BestDealsView from "./views/BestDealsView";
+import SearchView from "./views/SearchView";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomeView />} />
           <Route path="/bestdeals" element={<BestDealsView />} />
+          <Route path="/searchgame" element={<SearchView />} />
         </Routes>
       </main>
       <footer>

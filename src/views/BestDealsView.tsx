@@ -5,7 +5,7 @@ import "../styles/BestDeals.css";
 const BestDealsView: React.FC = () => {
   return (
     <>
-      <div id="container2">
+      <div id="container2" data-testId="games-header">
         <div className="head">
           <div className="head-thumb">
             <h2>Thumbnail</h2>

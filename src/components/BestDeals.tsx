@@ -60,21 +60,21 @@ const BestDeals: React.FC<BestDealsProps> = ({ maxPrice = 15 }) => {
   }, [maxPrice]);
 
   return (
-    <div className="games">
+    <div className="games" data-testid="games-list">
       {deals.map((deal: DealWithStore) => (
-        <div className="game" key={deal.dealID}>
-          <div className="game-thumb">
+        <div className="game" data-testid="game-items" key={deal.dealID}>
+          <div className="game-thumb" data-testid="game-thumb">
             <img id="game-img" src={deal.thumb} alt="Image missing" />
           </div>
-          <div className="game-title">
+          <div className="game-title" data-testid="game-title">
             <p id="game-gametitle">{deal.title}</p>
           </div>
-          <div className="game-price">
+          <div className="game-price" data-testid="game-price">
             <p id="game-normalPrice">${deal.normalPrice}</p>
             <p id="game-salesPrice">${deal.salePrice}</p>
             <p id="game-savings">{Math.round(parseFloat(deal.savings))}%</p>
           </div>
-          <div className="game-stores">
+          <div className="game-stores" data-testid="game-store">
             <p id="game-store">{deal.store}</p>
           </div>
         </div>
