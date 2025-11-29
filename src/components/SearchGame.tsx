@@ -105,7 +105,7 @@ const SearchGames: React.FC<searchGamesProps> = ({
       <div className="games" data-testid="games-list">
         {deals.map((deal: DealWithStore) => (
           <div className="game" data-testid="game-items" key={deal.dealID}>
-            <div className="game-thumb">
+            <div className="game-thumb" data-testid="game-thumb">
               <img id="game-img" src={deal.thumb} alt="Image missing" />
             </div>
             <div className="game-title" data-testid="game-title">
