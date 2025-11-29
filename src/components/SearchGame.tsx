@@ -81,7 +81,9 @@ const SearchGames: React.FC<searchGamesProps> = ({
             value={searchaGame}
             onChange={(e) => setSearchaGame(e.target.value)}
           />
-          <button type="submit">Search</button>
+          <button type="submit" data-testid="search-button">
+            Search
+          </button>
         </div>
       </form>
       <div id="container2" data-testid="games-header">
@@ -102,7 +104,7 @@ const SearchGames: React.FC<searchGamesProps> = ({
       </div>
       <div className="games" data-testid="games-list">
         {deals.map((deal: DealWithStore) => (
-          <div className="game" data-testid="game-item" key={deal.dealID}>
+          <div className="game" data-testid="game-items" key={deal.dealID}>
             <div className="game-thumb">
               <img id="game-img" src={deal.thumb} alt="Image missing" />
             </div>
