@@ -3,5 +3,15 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
+  ],
+  "compilerOptions": {
+    // This allows for better interoperability between CommonJS and ES Modules
+    "esModuleInterop": true,
+    // Specifies the type definitions to include in the compilation
+    "types": ["cypress", "node"]
+  },
+  "include": [
+    // Specifies that this configuration applies to all .ts files in the cypress folder
+    "**/*.ts"
   ]
 }
